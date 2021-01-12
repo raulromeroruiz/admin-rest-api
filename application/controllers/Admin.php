@@ -93,6 +93,7 @@ class Admin extends CI_Controller {
 
 	public function login()
 	{
+		var_dump($_SERVER);
 		$datos = $this->input->post();
 		$datos['password'] = ($datos['password']!="") ? md5($datos['password']):"";
 

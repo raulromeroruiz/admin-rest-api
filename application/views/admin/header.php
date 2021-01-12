@@ -17,7 +17,7 @@ $login = $_SESSION['login'];
     <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/datepicker3.css">
     <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/admin.css">
 
-    <script src="<?php echo base_url();?>static/scripts/libs/jquery-1.11.0.js"></script>
+    <script src="<?php echo base_url();?>bootstrap/js/jquery-1.11.0.js"></script>
     <script src="<?php echo base_url();?>bootstrap/js/bootstrap.min.js"></script>
     <!-- Table -->
     <script src="<?php echo base_url();?>bootstrap/js/jquery.dataTables.min.js"></script>

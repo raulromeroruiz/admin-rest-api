@@ -55,44 +55,44 @@ $route['translate_uri_dashes'] = FALSE;
 
 #Admin controllers
 $route['admin'] = "admin";
-$route['admin/home'] = "administrator/home";
-$route['admin/manager/(:any)'] = "administrator/admin/manager/$1";
-$route['admin/actions'] = "administrator/admin/actions";
-$route['admin/login'] = "administrator/admin/login";
-$route['admin/logout'] = "administrator/admin/logout";
+$route['home'] = "administrator/home";
+$route['manager/(:any)'] = "administrator/admin/manager/$1";
+$route['actions'] = "administrator/admin/actions";
+$route['login'] = "administrator/admin/login";
+$route['logout'] = "administrator/admin/logout";
 
-$route['admin/banners'] = "administrator/banners";
-$route['admin/banners/get/(:num)'] = "administrator/banners/get/$1";
-$route['admin/banners/save'] = "administrator/banners/save";
+$route['banners'] = "administrator/banners";
+$route['banners/get/(:num)'] = "administrator/banners/get/$1";
+$route['banners/save'] = "administrator/banners/save";
 
-$route['admin/noticias'] = "administrator/noticias";
-$route['admin/noticias/get/(:num)'] = "administrator/noticias/get/$1";
-$route['admin/noticias/save'] = "administrator/noticias/save";
+$route['noticias'] = "administrator/noticias";
+$route['noticias/get/(:num)'] = "administrator/noticias/get/$1";
+$route['noticias/save'] = "administrator/noticias/save";
 
-$route['admin/proyectos'] = "administrator/proyectos";
-$route['admin/proyectos/get/(:num)'] = "administrator/proyectos/get/$1";
-$route['admin/proyectos/save'] = "administrator/proyectos/save";
-$route['admin/proyectos/delete'] = "administrator/proyectos/delete";
-$route['admin/proyectos/change_image'] = "administrator/proyectos/change_image";
-$route['admin/proyectos/oficinas/(:num)'] = "administrator/proyectos/oficinas/$1";
+$route['proyectos'] = "administrator/proyectos";
+$route['proyectos/get/(:num)'] = "administrator/proyectos/get/$1";
+$route['proyectos/save'] = "administrator/proyectos/save";
+$route['proyectos/delete'] = "administrator/proyectos/delete";
+$route['proyectos/change_image'] = "administrator/proyectos/change_image";
+$route['proyectos/oficinas/(:num)'] = "administrator/proyectos/oficinas/$1";
 
-$route['admin/oficinas/get/(:num)'] = "administrator/proyectos/oficina/$1";
-$route['admin/oficinas/save'] = "administrator/proyectos/oficina/save";
-$route['admin/oficinas/delete'] = "administrator/proyectos/oficina/delete";
+$route['oficinas/get/(:num)'] = "administrator/proyectos/oficina/$1";
+$route['oficinas/save'] = "administrator/proyectos/oficina/save";
+$route['oficinas/delete'] = "administrator/proyectos/oficina/delete";
 
-$route['admin/urban/get/(:num)'] = "administrator/proyectos/urban/$1";
-$route['admin/urban/save'] = "administrator/proyectos/urban/save";
-$route['admin/urban/delete'] = "administrator/proyectos/urban/delete";
+$route['urban/get/(:num)'] = "administrator/proyectos/urban/$1";
+$route['urban/save'] = "administrator/proyectos/urban/save";
+$route['urban/delete'] = "administrator/proyectos/urban/delete";
 
-$route['admin/banners/delete'] = "administrator/proyectos/banners/delete";
+$route['banners/delete'] = "administrator/proyectos/banners/delete";
 
-$route['admin/usuarios'] = "administrator/usuarios";
-$route['admin/usuarios/get/(:num)'] = "administrator/usuarios/get/$1";
-$route['admin/usuarios/save'] = "administrator/usuarios/save";
-$route['admin/usuarios/confirm'] = "administrator/usuarios/confirm";
+$route['usuarios'] = "administrator/usuarios";
+$route['usuarios/get/(:num)'] = "administrator/usuarios/get/$1";
+$route['usuarios/save'] = "administrator/usuarios/save";
+$route['usuarios/confirm'] = "administrator/usuarios/confirm";
 
-$route['admin/perfil'] = "administrator/perfil";
-$route['admin/perfil/get/(:num)'] = "administrator/perfil/get/$1";
-$route['admin/perfil/save'] = "administrator/perfil/save";
+$route['perfil'] = "administrator/perfil";
+$route['perfil/get/(:num)'] = "administrator/perfil/get/$1";
+$route['perfil/save'] = "administrator/perfil/save";
 
-$route['404_override'] = 'error';
+// $route['404_override'] = 'error';

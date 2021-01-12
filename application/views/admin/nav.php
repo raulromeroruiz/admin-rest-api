@@ -11,16 +11,16 @@ $current = $this->uri->segment(2);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="javascript:;">Bambú Admin</a>
+                <a class="navbar-brand" href="javascript:;">Admin</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="<?php echo ($current=="home") ? "active":""; ?>"><a href="/admin/home">Inicio</a></li>
-                    <li class="<?php echo ($current=="proyectos") ? "active":""; ?>"><a href="<?php echo base_url(); ?>admin/proyectos">Proyectos</a></li>
-                    <li class="<?php echo ($current=="banners") ? "active":""; ?>"><a href="<?php echo base_url(); ?>admin/banners">Banners</a></li>
-                    <li class="<?php echo ($current=="noticias") ? "active":""; ?>"><a href="<?php echo base_url(); ?>admin/noticias">Noticias</a></li>
+                    <li class="<?php echo ($current=="proyectos") ? "active":""; ?>"><a href="<?php echo base_url(); ?>proyectos">Proyectos</a></li>
+                    <li class="<?php echo ($current=="banners") ? "active":""; ?>"><a href="<?php echo base_url(); ?>banners">Banners</a></li>
+                    <li class="<?php echo ($current=="noticias") ? "active":""; ?>"><a href="<?php echo base_url(); ?>noticias">Noticias</a></li>
                 </ul>
                 
                 <ul class="nav navbar-nav navbar-right">

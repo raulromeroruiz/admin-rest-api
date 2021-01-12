@@ -155,7 +155,7 @@
                             <div class="col-sm-9" id="container-images">
                                 <div class="col-sm-12 row fila">
                                     <div class="col-sm-3 row">
-                                        <img src="<?php echo base_url(); ?>static/images/image.jpg" alt="" id="img-preview" class="img-work">
+                                        <img src="" alt="" id="img-preview" class="img-work">
                                     </div>
                                     <div class="col-sm-4">
                                         <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>

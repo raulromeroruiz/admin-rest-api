@@ -5,7 +5,7 @@
     <title>Administrador de contenidos</title>
     <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>bootstrap/css/bootstrap-theme.min.css">
-    <script src="<?php echo base_url();?>static/scripts/libs/jquery-1.11.0.js"></script>
+    <script src="<?php echo base_url();?>bootstrap/js/jquery-1.11.0.js"></script>
     <script src="<?php echo base_url();?>bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
