@@ -72,7 +72,7 @@
                     <h4 class="modal-title custom_align" id="Heading">Editar</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo base_url(); ?>admin/usuarios/save" class="form form-horizontal" name="frm-usuarios" id="frm-usuarios" method="post" enctype="multipart/form-data" target="myframe">
+                    <form action="<?php echo base_url(); ?>usuarios/save" class="form form-horizontal" name="frm-usuarios" id="frm-usuarios" method="post" enctype="multipart/form-data" target="myframe">
                         <div class="form-group">
                             <label for="concept" class="col-sm-3 control-label">Nombres</label>
                             <div class="col-sm-9">
@@ -156,7 +156,7 @@ var usuarios = {
 
     editar: function(_id)
     {
-        $.post(PATH+'admin/usuarios/get/'+_id, {}, function(response, textStatus, xhr) {
+        $.post(PATH + 'admin/usuarios/get/'+_id, {}, function(response, textStatus, xhr) {
             if (response.result=="success") {
                 usuario = response.data;
                 $('#id').val( usuario.id );
@@ -172,7 +172,7 @@ var usuarios = {
     confirm: function(_response) {
         params = JSON.parse(_response);
         if (confirm("Desea enviar un correo con los datos registrados de "+params.nombres+",\nal correo "+params.correo )) {
-            $.post(PATH+'admin/usuarios/confirm/', params, function(response, textStatus, xhr) {
+            $.post(PATH + 'admin/usuarios/confirm/', params, function(response, textStatus, xhr) {
                 if (response.result=="success") {
                     alert('Los datos registrados fueron enviados correctamente.');
                     location.reload();
@@ -181,8 +181,8 @@ var usuarios = {
         }
         else {
             msg = 'Anote los datos generados para ingresar al Administrador:\n'
-                + '- Correo: '+params.correo+'\n'
-                + '- Contraseña: '+params.clave;
+                + '- Correo: ' + params.correo+'\n'
+                + '- Contraseña: ' + params.clave;
             alert(msg);
             location.reload();
         }

@@ -1178,6 +1178,17 @@ class CI_Upload {
 	// --------------------------------------------------------------------
 
 	/**
+	 * Show the array errors
+	 *
+	 */
+	public function show_errors()
+	{
+		return $this->error_msg;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
 	 * Prep Filename
 	 *
 	 * Prevents possible script execution from Apache's handling

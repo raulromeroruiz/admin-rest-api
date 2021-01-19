@@ -268,7 +268,7 @@ class Tools {
 
             case 'lista':
                 return array(
-                    'full'  => array(390, 400),
+                    'full'  => array(971, 717),
                     'small' => array(120, 120),
                 );
                 break;

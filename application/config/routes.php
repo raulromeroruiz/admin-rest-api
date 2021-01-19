@@ -61,9 +61,16 @@ $route['actions'] = "administrator/admin/actions";
 $route['login'] = "administrator/admin/login";
 $route['logout'] = "administrator/admin/logout";
 
+$route['combos'] = "administrator/combos";
+$route['combos/get/(:num)'] = "administrator/combos/get/$1";
+$route['combos/save'] = "administrator/combos/save";
+$route['combos/delete'] = "administrator/combos/delete";
+$route['combos/change_image'] = "administrator/combos/change_image";
+
 $route['banners'] = "administrator/banners";
 $route['banners/get/(:num)'] = "administrator/banners/get/$1";
 $route['banners/save'] = "administrator/banners/save";
+$route['banners/delete'] = "administrator/proyectos/banners/delete";
 
 $route['noticias'] = "administrator/noticias";
 $route['noticias/get/(:num)'] = "administrator/noticias/get/$1";
@@ -83,8 +90,6 @@ $route['oficinas/delete'] = "administrator/proyectos/oficina/delete";
 $route['urban/get/(:num)'] = "administrator/proyectos/urban/$1";
 $route['urban/save'] = "administrator/proyectos/urban/save";
 $route['urban/delete'] = "administrator/proyectos/urban/delete";
-
-$route['banners/delete'] = "administrator/proyectos/banners/delete";
 
 $route['usuarios'] = "administrator/usuarios";
 $route['usuarios/get/(:num)'] = "administrator/usuarios/get/$1";
