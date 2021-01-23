@@ -18,7 +18,8 @@ $current = $this->uri->segment(2);
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="<?php echo ($current=="home") ? "active":""; ?>"><a href="/admin/home">Inicio</a></li>
-                    <li class="<?php echo ($current=="proyectos") ? "active":""; ?>"><a href="<?php echo base_url(); ?>combos">Combos</a></li>
+                    <li class="<?php echo ($current=="productos") ? "active":""; ?>"><a href="<?php echo base_url(); ?>productos">Productos</a></li>
+                    <li class="<?php echo ($current=="combos") ? "active":""; ?>"><a href="<?php echo base_url(); ?>combos">Combos</a></li>
                     <li class="<?php echo ($current=="banners") ? "active":""; ?>"><a href="<?php echo base_url(); ?>banners">Banners</a></li>
                     <li class="<?php echo ($current=="noticias") ? "active":""; ?>"><a href="<?php echo base_url(); ?>noticias">Noticias</a></li>
                 </ul>
