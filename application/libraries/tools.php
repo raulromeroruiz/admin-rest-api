@@ -43,7 +43,6 @@ class Tools {
 
     public function url_file_upload($file, $path)
     {
-        //return base_url().$path.$file;
         return $path.$file;
     }
 
