@@ -265,6 +265,13 @@ class Tools {
                 );
                 break;
 
+            case 'foto':
+                return array(
+                    'full'  => array(971, 717),
+                    'small' => array(160, 160),
+                );
+                break;
+
             case 'lista':
                 return array(
                     'full'  => array(971, 717),

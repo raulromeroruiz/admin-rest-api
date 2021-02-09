@@ -156,6 +156,23 @@ class Productos_model extends CI_Model
         return $query->row();
     }
 
+    function save_file($params)
+    {
+        $data = array(
+            'seccion' => $params['seccion'],
+            'grupo'   => $params['grupo'],
+            'tipo'    => $params['tipo'],
+            'archivo' => $params['archivo'],
+            'orden'   => 1,
+            'estado'  => 1,
+        );
+        if (!empty($params['id'])){
+            $this->db->where('id', $params['id']);
+            return $this->db->update('archivos', $data);
+        }
+        return $this->db->insert('archivos', $data);;
+    }
+
     function save_photos($fotos=array(), $datos=array())
     {
         foreach ($fotos as $key => $foto) {

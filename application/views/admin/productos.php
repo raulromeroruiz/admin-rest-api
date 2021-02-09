@@ -119,13 +119,15 @@
                         <div class="form-group">
                             <label for="foto" class="col-sm-3 control-label img-foto" id="img-foto">Foto</label>
                             <div class="col-sm-9">
+                                <input type="hidden" name="filename" id="filename">
+                                <input type="hidden" name="id_file" id="id_file">
                                 <input class="form-control" type="file" name="foto" id="foto" data-group="foto" onchange="productos.readerFile();" />
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" onclick="admin.save('productos', 'i')"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                    <button type="button" class="btn btn-success btn-lg" style="width: 100%;" onclick="admin.save('productos', 'i')"><span class="glyphicon glyphicon-ok-sign"></span> Guardar</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -146,7 +148,7 @@
                     </div>
                 </div>
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-success" onclick="productos.delete('productos');"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                    <button type="button" class="btn btn-warning" onclick="productos.delete('productos');"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
                 </div>
             </div>
@@ -333,6 +335,8 @@ var productos = {
                         'data-producto': producto.id,
                         'data-foto': producto.id_foto
                     });
+                    $('#filename').val( uri[uri.length-1] );
+                    $('#id_file').val( producto.id_foto );
                 }
 
                 $('#edit').modal('show');
@@ -341,14 +345,14 @@ var productos = {
     },
 
     loadImage: function(_images, _container)
-    {console.log(_images);
+    {
         $('#image-container').hide();
         if (!_images) 
             return
 
         if (_images.length>0) {
             if (typeof _images == "string" && _images!="") {
-                $(_container).html("<img src='/"+_images+"'>");
+                $(_container).html("<img src='/"+_images+"?v=" + Math.random() + "'>");
                 return false;
             }
 
@@ -439,6 +443,7 @@ var productos = {
         size = this.size.foto;
         // producto = target.dataset.producto;
         foto = target.dataset.foto;
+        container = document.getElementById("img-" + target.id);
 
         var reader = new FileReader();
         var image = new Image();
@@ -458,7 +463,8 @@ var productos = {
                     alert('La imagen debe tener las siguientes dimensiones '+size);
                     return false;
                 }
-                productos.changeImage(document.getElementById(target.id));
+                container.innerHTML = "";
+                container.appendChild(this);
             };
             image.onerror= function() {
                 inputFile.addClass('alert-danger');

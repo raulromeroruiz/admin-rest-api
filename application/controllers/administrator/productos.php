@@ -45,14 +45,12 @@ class Productos extends CI_Controller {
 	public function get($id)
 	{
 		$producto = $this->productos->get_producto($id);
-		$imagenes = $this->productos->get_banners($id);
 
 		$response['result']	= "error";
 		if ($producto) {
 			$response = array(
 				'result' => "success",
 				'data' => $producto,
-				'imagenes' => $imagenes,
 			);
 		}
 		echo json_encode($response);
@@ -63,23 +61,32 @@ class Productos extends CI_Controller {
 		$datos = $this->input->post();
 		$datos['url'] = $this->tools->urlfriendly($datos['nombre']);
 		$datos['estado'] = 1;
+		$filename = $datos['filename'];
+		$id_file = $datos['id_file'];
+		unset($datos['filename']);
+		unset($datos['id_file']);
 
 		$id = $datos['id'];
+		$settings = array();
 		if (empty($datos['id'])) {
 			$query = $this->manager->insert("productos", $datos);
 			$id = $this->db->insert_id();
 		}
 		else {
 			$query = $this->manager->update("productos", $datos, $datos['id']);
+			$settings = array('overwrite'=>TRUE, 'filename'=> $filename);
 		}
 		if ( $query ) {
-			if (!empty($_FILES['tmp_name'])) {
-				$fotos['foto'] = $this->upload('foto', 'foto', $id);
-				$data = array(
-					'id'   => $id,
-					'tipo' => 1, //1 Photo
+			if (!empty($_FILES['foto']['tmp_name'])) {
+				$archivos['foto'] = $this->upload('foto', 'foto', $id, $settings);
+				$cfg = array(
+					'id' => $id_file,
+					'seccion' => $id,
+					'grupo' => "foto",
+					'tipo' => 1,
+					'archivo' => $archivos['foto']
 				);
-				$this->productos->save_photos($fotos, $data);
+				$this->productos->save_file($cfg);
 			}
 			echo $this->tools->reload();
 		}
@@ -90,10 +97,11 @@ class Productos extends CI_Controller {
 		$post = $this->tools->objeto($this->input->post());
 		$tabla = $post->tabla;
 		$id = $post->id;
-		$files = $this->manager->get_simplebyfield($tabla, array('archivo'), array('seccion'=>$id));
+		$files = $this->manager->get_simplebyfield($tabla, array('id, archivo'), array('seccion'=>$id));
 
 		if ($this->manager->delete('productos', $id)) {
 			foreach ($files as $file) {
+				$this->manager->delete('archivos', $file->id);
 				@unlink($file->archivo);
 				@unlink(str_replace('full', 'medium', $file->archivo));
 				@unlink(str_replace('full', 'small', $file->archivo));
@@ -110,8 +118,11 @@ class Productos extends CI_Controller {
 		$filename = ($settings['filename']!="") ? $settings['filename']:$this->tools->cleanfilename($_FILES[$file]['name']);
 
 		$config = array();
-		$ruta = 'contenidos/uploads/'.$tabla.'/full/'.$id.'/';
-		$config['upload_path'] = "../".$ruta;
+		$ruta = '../contenidos/uploads/'.$tabla.'/full/'.$id.'/';
+		if (!is_dir($ruta)){
+			mkdir($ruta, 0755, TRUE);
+		}
+		$config['upload_path'] = $ruta;
 		$config['file_name'] = $filename;
 		$config['allowed_types'] = 'jpg|jpeg|png';
 		$config['max_size']	= '5000';
@@ -120,14 +131,11 @@ class Productos extends CI_Controller {
 		$config['remove_spaces']  = TRUE;
 		$config['overwrite']  = $settings['overwrite'];
 		$config['exactly']  = TRUE;
-		//var_dump($config);
-		$this->load->library('upload', $config);
+
 		$this->upload->initialize($config);
 		if ( ! $this->upload->do_upload($file))
 		{
 			$errors = $this->upload->show_errors();
-			//var_dump($errors);
-			//exit;
 			$error = array(
 				'result' => FALSE,
 				'msg'	 => ""
@@ -147,7 +155,6 @@ class Productos extends CI_Controller {
 			$data = array('upload_data' => $this->upload->data());
 
 			$sizes = $this->tools->sizes($tabla, $_FILES[$file]['tmp_name']);
-			//var_dump($sizes);
 			$this->load->library('image_lib'); 
 			foreach ($sizes as $key => $size) {
 				$file = $data['upload_data']['full_path'];
@@ -156,7 +163,11 @@ class Productos extends CI_Controller {
 				$cfg['image_library'] = 'gd2';
 				$cfg['source_image']	= $file;
 				//$cfg['create_thumb'] = TRUE;
-				$cfg['new_image'] = '../contenidos/uploads/'.$tabla.'/'.$key.'/'.$id.'/'.$path[count($path)-1];
+				$dir = '../contenidos/uploads/'.$tabla.'/'.$key.'/'.$id;
+				if (!is_dir($dir)){
+					mkdir($dir, 0755, TRUE);
+				}
+				$cfg['new_image'] = $dir.'/'.$path[count($path)-1];
 				$cfg['maintain_ratio'] = TRUE;
 				$cfg['width']	= $sizes[$key][0];
 				$cfg['height']	= $sizes[$key][1];

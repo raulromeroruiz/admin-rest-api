@@ -30,3 +30,5 @@ textarea {resize:none;}
 #image-container{display:none;}
 .dataTable tr th {cursor: pointer;}
 .menu-actions{overflow: hidden; margin-bottom:10px;}
+
+#img-foto img{width: 100%;}
