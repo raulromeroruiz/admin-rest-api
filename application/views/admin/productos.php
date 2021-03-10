@@ -95,8 +95,13 @@
                         <div class="form-group">
                             <label for="compartir" class="col-sm-3 control-label">Precio</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="text" name="precio" id="precio" placeholder="Precio">
+                                <div class="fila">
+                                    <a class="btn btn-primary add-price">Añadir</a>
+                                </div>
+                                <div class="row prices">
+                                </div>
                             </div>
+                            <input type="hidden" name="precio" id="precio">
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label col-sm-3">Categoría</label>
@@ -242,6 +247,26 @@ var productos = {
             admin.actions('productos', $(this).val());
         });
 
+        $('.add-price').click(function(event) {
+            productos.addPrice({});
+        });
+
+        $(document).on('blur', '.costo, .detalle', function(event) {
+            event.preventDefault();
+            // console.log('blur');
+            precios = $('.price');
+            // console.log('total precios ' + precios.lenght);
+            obj = [];
+            precios.each(function(index, el) {
+                // console.log(index, el);
+                // console.log($(el).find('.costo').val());
+                item = {costo: $(el).find('.costo').val(), descripcion: $(el).find('.detalle').val()};
+                obj.push(item);
+
+            });
+            $('#precio').val(JSON.stringify(obj));
+        });
+
         $(document).on('click', '.remove_picture', function(event) {
             event.preventDefault();
             if( confirm('Esta seguro de eliminar la foto?')) {
@@ -321,6 +346,31 @@ var productos = {
                 $('#precio').val( producto.precio );
                 $('#categoria').val( producto.categoria );
 
+                // Prices
+                $('.prices').html('');
+                if (producto.precio==""){
+                    console.log('No precio');
+                    // $('#precio2').prev().html('button');
+                }
+                else {
+                    prices = JSON.parse(producto.precio);
+                    console.log(typeof prices);
+                    if (typeof prices == "number"){
+                        console.log('unique price');
+                        obj = {costo:producto.costo};
+                        productos.addPrice(obj);
+                    }
+                    else {
+                        console.log('multiple prices')
+                        for(x in prices){
+                            obj = {
+                                costo: prices[x].costo,
+                                descripcion: prices[x].descripcion
+                            };
+                            productos.addPrice(obj);
+                        }
+                    }
+                }
                 //Load image
                 imagenes = (response.imagenes) ? response.imagenes:{};
                 productos.loadImage(producto.foto, '#img-foto');
@@ -330,7 +380,6 @@ var productos = {
                 if (producto.foto) {
                     uri = producto.foto.split('/');
                     $('#foto').attr({
-                        // 'onchange': "productos.changeImage("+producto.id_foto+", "+producto.id+")", 
                         'data-file': uri[uri.length-1],
                         'data-producto': producto.id,
                         'data-foto': producto.id_foto
@@ -504,6 +553,21 @@ var productos = {
             alert(request.response.details.msg);
         };
         request.send(formData);
+    },
+
+    addPrice: function(_params){
+        console.log(_params);
+        costo = (_params.costo!="" && _params.costo) ? _params.costo:"";
+        dscr = (_params.descripcion!="" && _params.descripcion) ? _params.descripcion:"";
+        fila = `<div class="fila clear price">
+            <div class="col-2">
+                <input type="text" class="form-control costo" value="` + costo + `" placeholder="Precio">
+            </div>
+            <div class="col-4">
+                <input type="text" class="form-control detalle" value="` + dscr + `" placeholder="Descripción">
+            </div>
+        </div>`;
+        $('.prices').append(fila);
     },
 
     map: null,

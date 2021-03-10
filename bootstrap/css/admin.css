@@ -2,7 +2,7 @@
 .progress{margin:0;}
 .ajaxfile{display:none;}
 #mytable_wrapper{margin-top:15px;}
-.fila {margin-bottom:8px;}
+.fila {margin-bottom:8px; display:flex;}
 #container-images .fila .row .img-work, #container-images .fila .row .img-work img {width:100%;}
 
 .home a{display:block; text-align:center;}
@@ -32,3 +32,17 @@ textarea {resize:none;}
 .menu-actions{overflow: hidden; margin-bottom:10px;}
 
 #img-foto img{width: 100%;}
+
+.col-2{
+	width: 16.66666667%;
+	float: left;
+	padding: 0 15px;
+}
+.col-4{
+	width: 33.33333333%;
+	float: left;
+	padding: 0 15px;
+}
+.clear{
+	clear: both;
+}
