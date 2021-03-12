@@ -29,7 +29,9 @@ $current = $this->uri->segment(2);
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $login->nombres; ?> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/admin/perfil">Perfil</a></li>
+                            <?php if (in_array($login->tipo, [1,2])) { ?>
                             <li><a href="/admin/usuarios">Usuarios</a></li>
+                            <?php } ?>
                             <li class="divider"></li>
                             <li><a href="/admin/logout">Cerrar sesión</a></li>
                         </ul>

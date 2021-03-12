@@ -34,7 +34,6 @@ class Perfil extends CI_Controller {
 	{
         $perfil = $this->manager->get_simplebyfield('usuarios', array('id, nombres, apellidos, correo, tipo'), array('id'=>$this->login->id));
         $tipo_usuarios = $this->usuarios->tipos();
-		//$tipo_usuarios = $this->manager->all('tipo_usuarios');
 
 		$data = array(
 			'perfil' => $perfil, 
@@ -97,7 +96,7 @@ class Perfil extends CI_Controller {
                     exit;
                 }
                 else {
-                    $datos['password'] = md5($datos['password']);
+                    $datos['password'] = password_hash($datos['password'], PASSWORD_DEFAULT);
                     unset($datos['cpassword']);
                     //$query = $this->manager->update("usuarios", $datos, $datos['id']);
                 }
@@ -114,13 +113,13 @@ class Perfil extends CI_Controller {
                 'message' => "Se cerrará la sesión para que pueda usar sus nuevos datos",
                 'result' => "success",
             );
-            if ($search[0]->password != md5($new_password)) {
+            if (password_verify($new_password, $search[0]->password)) {
                 $this->load->library('php_mailer');
                 $message = "Se ha producido el cambio de su contraseña: <br>"
                             ."Nueva contraseña: <b>".$new_password."</b>";
                 $params = array(
-                    'from' => array('noreply@inmobiliariabambu.com', 'NoReply'),
-                    'subject' => utf8_decode("Cambio su contraseña de administrador de Bambú"),
+                    'from' => array('noreply@chinocharapa.pe', 'NoReply'),
+                    'subject' => utf8_decode("Cambio su contraseña de administrador de Chino Charapa"),
                     'message' => utf8_decode($message),
                     'address' => array($datos['correo'], utf8_decode($datos['nombres'])),
                 );
