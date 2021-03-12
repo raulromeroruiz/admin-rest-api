@@ -71,7 +71,7 @@ class Manager_model extends CI_Model
         $q = $this->db->get_where('usuarios', array('correo'=>$data['correo']));
         $user = $q->row();
         if ($user) {
-            if ($user->password === $data['password']) {
+            if (password_verify($data['password'], $user->password)) {
                 return array(TRUE, $user);
             }
             else {

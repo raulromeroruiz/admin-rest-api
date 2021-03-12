@@ -55,7 +55,7 @@
                     <div class="form-group">
                         <label for="concept" class="col-sm-3 control-label">&nbsp;</label>
                         <div class="col-sm-9">
-                            <button type="button" class="btn btn-warning btn-lg" onclick="perfil.save()"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                            <button type="button" class="btn btn-warning btn-lg" onclick="perfil.save()"><span class="glyphicon glyphicon-ok-sign"></span> Guardar</button>
                         </div>
                     </div>
                 </form>
@@ -100,9 +100,9 @@ var perfil = {
 
     save: function()
     {
+        target = event.target;
         var datos = $('#frm-perfil').serializeArray();
-        console.log(); 
-        $(event.target)
+        $(target)
         .text('Guardando info...')
         .addClass('disabled');
 
@@ -131,6 +131,10 @@ var perfil = {
         }
         if (msg!="") {
             alert(msg);
+            $(target)
+            .html('Guardar')
+            .removeClass('disabled');
+            return false;
         }
         else {
             $.post(PATH+'admin/perfil/save', datos, function(response, textStatus, xhr) {
@@ -140,6 +144,9 @@ var perfil = {
                 }
                 else {
                     alert(response.message);
+                    $(target)
+                    .html('Guardar')
+                    .removeClass('disabled');
                     return false;
                 }
             }, "json");

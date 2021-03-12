@@ -63,12 +63,6 @@ class Usuarios extends CI_Controller {
         $login = $this->login;
 
         $exist = FALSE;
-        /*if (!empty($search)) {
-            if ($search->correo==$login->correo) {
-                $exist = TRUE;
-            } 
-            //$exist = TRUE;
-        }*/
 
         $current = $this->manager->where('usuarios', array('id'=>$datos['id']));
         $search = $this->manager->where('usuarios', array('correo'=>$datos['correo']));
@@ -79,7 +73,7 @@ class Usuarios extends CI_Controller {
             }
 			$datos['username'] = $this->tools->urlfriendly($datos['nombres']);
 			$password = rand(11111,99999);
-			$datos['password'] = md5($password);
+			$datos['password'] = password_hash($password, PASSWORD_DEFAULT);
 			$datos['estado'] = 1;
 			$query = $this->manager->insert("usuarios", $datos);
 		}
@@ -122,15 +116,15 @@ class Usuarios extends CI_Controller {
 
 		$this->load->library('php_mailer');
 		$message = "Estimado ".$datos->nombres.",<br>"
-                  ."Se ha creado una cuenta para que administre el contenido de la página web de Bambú.<br>"
+                  ."Se ha creado una cuenta para que administre el contenido de la página web de Chino Charapa.<br>"
                   ."<br>"
                   ."Estos son los datos ingresados:<br>"
                   ."<b>Correo de inicio de sesión : </b>".$datos->correo."<br>"
                   ."<b>Contraseña de ingreso : </b>".$datos->clave."<br>";
 
         $params = array(
-        	'from' => array("noreply@inmobiliariabambu.com", utf8_decode("No Reply")),
-        	'subject' => utf8_decode("Registro administrador Bambú"),
+        	'from' => array("noreply@chinocharape.pe", utf8_decode("No Reply")),
+        	'subject' => utf8_decode("Registro administrador Chino Charapa"),
         	'message' => utf8_decode($message),
         	'address' => array($datos->correo, utf8_decode($datos->nombres." ".$datos->apellidos)),
         );
