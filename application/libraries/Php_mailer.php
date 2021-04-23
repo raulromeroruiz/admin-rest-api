@@ -1,6 +1,9 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 class PHP_Mailer {
     public function __construct()
     {
@@ -13,13 +16,18 @@ class PHP_Mailer {
     }
 
     public function PHP_Mailer() {
-        require_once('PHPMailer/class.phpmailer.php');
+        require 'PHPMailer/src/Exception.php';
+        require 'PHPMailer/src/PHPMailer.php';
+        require 'PHPMailer/src/SMTP.php';
     }
 
     public function send($params) {
-        require_once('PHPMailer/class.phpmailer.php');
+        require 'PHPMailer/src/Exception.php';
+        require 'PHPMailer/src/PHPMailer.php';
+        require 'PHPMailer/src/SMTP.php';
             
         $mail = new PHPMailer();
+        // $mail->SMTPDebug = 1;
         $mail->IsSMTP(); // we are going to use SMTP
         $mail->SMTPAuth   = TRUE; // enabled SMTP authentication
         //$mail->SMTPSecure = "ssl";  // prefix for secure protocol to connect to the server
