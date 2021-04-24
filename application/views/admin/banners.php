@@ -67,7 +67,7 @@
                     <h4 class="modal-title custom_align" id="Heading">Editar</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo base_url(); ?>admin/banners/save" class="form form-horizontal" name="frm-banners" id="frm-banners" method="post" enctype="multipart/form-data" target="myframe">
+                    <form action="<?php echo base_url(); ?>banners/save" class="form form-horizontal" name="frm-banners" id="frm-banners" method="post" enctype="multipart/form-data" target="myframe">
                         <div class="form-group">
                             <label for="concept" class="col-sm-3 control-label">Título</label>
                             <div class="col-sm-9">
@@ -76,21 +76,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="concept" class="col-sm-3 control-label">Texto</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control" name="contenido" id="contenido" cols="30" rows="3" placeholder="Texto del banner" style="width:100%;"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="concept" class="col-sm-3 control-label">Imagen</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="file" name="imagen" id="imagen" multiple title="Seleccione la imagen para el Banner (1680x400)"/>
+                                <input class="form-control" type="file" name="imagen" id="imagen" multiple title="Seleccione la imagen para el Banner (1838x784)"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="concept" class="col-sm-3 control-label">Imagen Mobile</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="file" name="mobile" id="imagen_mobile" title="Seleccione la imagen para el Banner versión mobile (768x576)"/>
+                                <input class="form-control" type="file" name="mobile" id="imagen_mobile" title="Seleccione la imagen para el Banner versión mobile (415x649)"/>
                             </div>
                         </div>
                         <div class="form-group" id="image-container">
@@ -142,7 +136,7 @@
     });
 
 var banners = {
-    sizes: ['1680x400', '768x576'],
+    sizes: ['1838x784', '415x650'],
     init: function()
     {
         $('#imagen').bootstrapFileInput();

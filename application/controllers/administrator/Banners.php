@@ -95,8 +95,11 @@ class Banners extends CI_Controller {
 	{
 		$sizes = $this->tools->sizes($tabla);
 
-		$ruta = 'contenidos/uploads/'.$tabla.'/full/';
-		$config['upload_path'] = "./".$ruta;
+		$ruta = '../contenidos/uploads/'.$tabla.'/full/';
+		if (!is_dir($ruta)){
+			mkdir($ruta, 0755, TRUE);
+		}
+		$config['upload_path'] = $ruta;
 		$config['file_name'] = $this->tools->cleanfilename($_FILES[$file]['name']);
 		$config['allowed_types'] = 'jpg|jpeg|png';
 		$config['max_size']	= '5000';
@@ -139,7 +142,7 @@ class Banners extends CI_Controller {
 				$cfg['image_library'] = 'gd2';
 				$cfg['source_image']	= $file;
 				//$cfg['create_thumb'] = TRUE;
-				$cfg['new_image'] = './contenidos/uploads/'.$tabla.'/'.$size[0].'/'.$path[count($path)-1];
+				$cfg['new_image'] = '../contenidos/uploads/'.$tabla.'/'.$size[0].'/'.$path[count($path)-1];
 				$cfg['maintain_ratio'] = TRUE;
 				$cfg['width']	= $size[1];
 				$cfg['height']	= $size[2];
