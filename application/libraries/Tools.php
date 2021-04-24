@@ -313,7 +313,7 @@ class Tools {
             
             case 'banners':
                 return array(
-                    array('full', 1680, 400),
+                    array('full', 1838, 784),
                     array('medium', 300, 300),
                     array('small', 75, 75),
                 );
@@ -321,7 +321,7 @@ class Tools {
             
             case 'banner_mobile':
                 return array(
-                    array('full', 768, 576),
+                    array('full', 415, 650),
                     array('medium', 300, 300),
                     array('small', 120, 120),
                 );
