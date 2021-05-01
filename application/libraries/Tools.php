@@ -313,6 +313,10 @@ class Tools {
             
             case 'banners':
                 return array(
+                    'full'  => array(1838, 784),
+                    'small' => array(75, 75),
+                );
+                return array(
                     array('full', 1838, 784),
                     array('medium', 300, 300),
                     array('small', 75, 75),
@@ -320,6 +324,10 @@ class Tools {
                 break;
             
             case 'banner_mobile':
+                return array(
+                    'full'  => array(415, 650),
+                    'small' => array(120, 120),
+                );
                 return array(
                     array('full', 415, 650),
                     array('medium', 300, 300),

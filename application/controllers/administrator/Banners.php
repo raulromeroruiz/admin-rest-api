@@ -103,8 +103,8 @@ class Banners extends CI_Controller {
 		$config['file_name'] = $this->tools->cleanfilename($_FILES[$file]['name']);
 		$config['allowed_types'] = 'jpg|jpeg|png';
 		$config['max_size']	= '5000';
-		$config['max_width']  =  $sizes[0][1];
-		$config['max_height']  =  $sizes[0][2];
+		$config['max_width']  =  $sizes['full'][0];
+		$config['max_height']  =  $sizes['full'][1];
 		$config['remove_spaces']  = TRUE;
 		$config['exactly']  = TRUE;
 

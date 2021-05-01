@@ -84,7 +84,7 @@
                         <div class="form-group">
                             <label for="concept" class="col-sm-3 control-label">Imagen Mobile</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="file" name="mobile" id="imagen_mobile" title="Seleccione la imagen para el Banner versión mobile (415x649)"/>
+                                <input class="form-control" type="file" name="mobile" id="imagen_mobile" title="Seleccione la imagen para el Banner versión mobile (415x650)"/>
                             </div>
                         </div>
                         <div class="form-group" id="image-container">
