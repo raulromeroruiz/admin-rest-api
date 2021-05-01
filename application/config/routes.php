@@ -106,4 +106,9 @@ $route['perfil'] = "administrator/perfil";
 $route['perfil/get/(:num)'] = "administrator/perfil/get/$1";
 $route['perfil/save'] = "administrator/perfil/save";
 
+$route['configuracion'] = "administrator/configuracion";
+$route['configuracion/save'] = "administrator/configuracion/save";
+$route['configuracion/get/(:any)/(:num)'] = "administrator/configuracion/get/$1/$2";
+$route['configuracion/set'] = "administrator/configuracion/set";
+
 // $route['404_override'] = 'error';

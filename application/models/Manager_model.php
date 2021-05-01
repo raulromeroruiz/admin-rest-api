@@ -107,4 +107,19 @@ class Manager_model extends CI_Model
         return $query->result();
     }
 
+    /* GET OPTION CONFIG */
+    function get_option($id)
+    {
+        $query = $this->db->get_where('config', array('id'=>$id));
+        return $query->row();
+    }
+
+    function set_option($params)
+    {
+        $this->db->set('opcion', $params['option']);
+        $this->db->set('valor', $params['value']);
+        $this->db->where('id', $params['id']);
+        return $this->db->update('config');
+    }
+
 }
