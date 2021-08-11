@@ -18,6 +18,7 @@ $current = $this->uri->segment(2);
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="<?php echo ($current=="home") ? "active":""; ?>"><a href="/admin/home">Inicio</a></li>
+                    <li class="<?php echo ($current=="categorias") ? "active":""; ?>"><a href="<?php echo base_url(); ?>categorias">Categorías</a></li>
                     <li class="<?php echo ($current=="productos") ? "active":""; ?>"><a href="<?php echo base_url(); ?>productos">Productos</a></li>
                     <li class="<?php echo ($current=="banners") ? "active":""; ?>"><a href="<?php echo base_url(); ?>banners">Banners</a></li>
                     <li class="<?php echo ($current=="configuracion") ? "active":""; ?>"><a href="<?php echo base_url(); ?>configuracion">Configuración</a></li>

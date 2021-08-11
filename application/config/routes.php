@@ -61,6 +61,12 @@ $route['actions'] = "administrator/admin/actions";
 $route['login'] = "administrator/admin/login";
 $route['logout'] = "administrator/admin/logout";
 
+$route['categorias'] = "administrator/categorias";
+$route['categorias/get/(:num)'] = "administrator/categorias/get/$1";
+$route['categorias/save'] = "administrator/categorias/save";
+$route['categorias/delete'] = "administrator/categorias/delete";
+$route['categorias/change_image'] = "administrator/categorias/change_image";
+
 $route['productos'] = "administrator/productos";
 $route['productos/get/(:num)'] = "administrator/productos/get/$1";
 $route['productos/save'] = "administrator/productos/save";
