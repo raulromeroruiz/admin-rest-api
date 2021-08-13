@@ -93,6 +93,10 @@ class Banners extends CI_Controller {
 
 	public function upload($file="", $tabla)
 	{
+		if($_FILES[$file]['error'] == 4)
+		{
+			return "";
+		}
 		$sizes = $this->tools->sizes($tabla);
 
 		$ruta = '../contenidos/uploads/'.$tabla.'/full/';

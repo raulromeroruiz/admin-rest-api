@@ -325,11 +325,11 @@ class Tools {
             
             case 'banner_mobile':
                 return array(
-                    'full'  => array(415, 650),
+                    'full'  => array(720, 1128),
                     'small' => array(120, 120),
                 );
                 return array(
-                    array('full', 415, 650),
+                    array('full', 720, 1128),
                     array('medium', 300, 300),
                     array('small', 120, 120),
                 );

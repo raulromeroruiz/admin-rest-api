@@ -84,7 +84,7 @@
                         <div class="form-group">
                             <label for="concept" class="col-sm-3 control-label">Imagen Mobile</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="file" name="mobile" id="imagen_mobile" title="Seleccione la imagen para el Banner versión mobile (415x650)"/>
+                                <input class="form-control" type="file" name="mobile" id="imagen_mobile" title="Seleccione la imagen para el Banner versión mobile (720x1128)"/>
                             </div>
                         </div>
                         <div class="form-group" id="image-container">
@@ -130,13 +130,13 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-    <iframe src="" frameborder="0" name="myframe" style="width:100%; height:300px; display:none;"></iframe>
+    <iframe src="" frameborder="0" name="myframe" style="width:100%; height:600px; display:none"></iframe>
 <script>
     $(document).ready(function() {
     });
 
 var banners = {
-    sizes: ['1838x784', '415x650'],
+    sizes: ['1838x784', '720x1128'],
     init: function()
     {
         $('#imagen').bootstrapFileInput();
