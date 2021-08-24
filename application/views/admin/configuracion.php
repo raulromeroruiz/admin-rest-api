@@ -41,7 +41,7 @@
         </div>
     </div>
 </div>
-    <iframe src="" frameborder="0" name="myframe" style="width:800px; height:400px; display:none;"></iframe>
+    <iframe src="" frameborder="0" name="myframe" id="myframe" style="width:100%; height:400px; display:block;"></iframe>
     <!--  Editar Campos personalizados -->
     <div class="modal fade" id="fields" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
         <div class="modal-dialog">
@@ -330,7 +330,7 @@ var config = {
         console.log(type);
         console.log(this.mimes[type]);
         if (this.mimes[type] != filetype){
-            console.log('Solo se permite archivos ' + type);
+            alert('Solo se permite archivos ' + type);
             return false;
         }
         console.log('Go Upload');

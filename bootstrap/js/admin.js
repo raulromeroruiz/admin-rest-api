@@ -81,7 +81,6 @@ var admin = {
     save: function(_tabla, _tipo)
     {
         if (_tipo=="i") {
-            //document.forms['frm-'+_tabla].submit();
             document.forms['frm-'+_tabla].submit();
         }
         else {
@@ -114,7 +113,6 @@ var admin = {
         $("input.checkthis:checked").each(function(index, el) {
             ids.push( $(el).val() );
         });
-        //trace([ids.join(","), _action]); return;
         if (ids.length==0) 
             return;
 
@@ -198,6 +196,16 @@ var admin = {
         else {
             console.log('No localStorage');
         }
+    },
+
+    openAjax: function(){
+        $('.loader')
+        .removeAttr('style')
+        .addClass('open');
+    },
+
+    closeAjax: function(){
+        $('.loader').fadeOut(100);
     }
 }
 

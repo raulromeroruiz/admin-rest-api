@@ -46,3 +46,16 @@ textarea {resize:none;}
 .clear{
 	clear: both;
 }
+
+.loader {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+	background: rgba(255,255,255,.5) url(../images/loader.svg) center;
+	background-repeat: no-repeat;
+	display: none;
+}
+.loader.open{
+	display: block;
+}

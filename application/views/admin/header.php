@@ -60,4 +60,5 @@ $login = $_SESSION['login'];
     </script>
 </head>
 <body>
+    <div class="loader"></div>
     <?php require_once('nav.php'); ?>
