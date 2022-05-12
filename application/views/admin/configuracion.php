@@ -41,7 +41,7 @@
         </div>
     </div>
 </div>
-    <iframe src="" frameborder="0" name="myframe" id="myframe" style="width:100%; height:400px; display:block;"></iframe>
+    <iframe src="" frameborder="0" name="myframe" id="myiframe" style="width:100%; height:400px; display:block;"></iframe>
     <!--  Editar Campos personalizados -->
     <div class="modal fade" id="fields" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
         <div class="modal-dialog">
@@ -314,6 +314,12 @@ $(document).ready(function() {
     });
 
     $('#pdf').bootstrapFileInput();
+
+    var iframe = document.getElementById('myiframe');
+    iframe.onload = function() {
+        $('.file-input-name').text('Archivo cargado correctamente!');
+        admin.closeAjax();
+    }
 });
 var form = document.forms['frm-configuracion'];
 
@@ -347,6 +353,7 @@ var change = function(id, opcion, field) {
     form.elements.namedItem("id").value = id;
     form.elements.namedItem("file").value = opcion;
     form.submit();
+    admin.openAjax();
 }
 
 var editarCampo = function(id) {

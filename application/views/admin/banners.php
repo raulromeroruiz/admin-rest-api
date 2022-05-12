@@ -130,7 +130,7 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-    <iframe src="" frameborder="0" name="myframe" style="width:100%; height:600px; display:none"></iframe>
+    <iframe src="" frameborder="0" name="myframe" id="myframe" style="width:100%; height:600px; display:none"></iframe>
 <script>
     $(document).ready(function() {
     });

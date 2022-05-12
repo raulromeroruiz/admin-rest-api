@@ -62,6 +62,12 @@ var admin = {
         $('#correo').val( admin.storage('get', 'email') );
         if( $('#correo').val()!="")
             $('#password').focus();
+
+        var iframe = document.getElementById('myframe');
+        iframe.onload = function() {
+            console.log('Load complete');
+            admin.closeAjax();
+        }
     },
 
     loadImage: function(_src, _container)
@@ -81,6 +87,7 @@ var admin = {
     save: function(_tabla, _tipo)
     {
         if (_tipo=="i") {
+            admin.openAjax();
             document.forms['frm-'+_tabla].submit();
         }
         else {

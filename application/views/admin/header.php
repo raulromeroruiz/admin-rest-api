@@ -27,8 +27,6 @@ $login = $_SESSION['login'];
     <script src="<?php echo base_url();?>bootstrap/js/bootstrap-filestyle.min.js"></script>
     <script src="<?php echo base_url();?>bootstrap/js/tinymce3/jquery.tinymce.js"></script>
     
-    <script src="<?php echo base_url();?>bootstrap/js/admin.js"></script>
-
     <script>
     $(document).ready(function() {
         <?php 

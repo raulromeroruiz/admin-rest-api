@@ -212,7 +212,7 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-    <iframe src="" frameborder="0" name="myframe" style="width:100%; height:300px; display:none;"></iframe>
+    <iframe src="" frameborder="0" name="myframe" id="myframe" style="width:100%; height:300px; display:none;"></iframe>
 <!--
 <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCGqaXaEB_cVXw64okDG9eE-ZaywU9-3Ks"></script>
 -->
