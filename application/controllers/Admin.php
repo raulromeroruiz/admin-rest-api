@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-session_start();
+
 class Admin extends CI_Controller {
 
 	/**
@@ -17,6 +17,9 @@ class Admin extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	private $login = null;
+
 	public function __construct()
    	{
     	parent::__construct();
@@ -93,7 +96,6 @@ class Admin extends CI_Controller {
 
 	public function login()
 	{
-		var_dump($_SERVER);
 		$datos = $this->input->post();
 		$datos['password'] = ($datos['password']!="") ? md5($datos['password']):"";
 

@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-session_start();
+
 class Home extends CI_Controller {
 
 	/**
@@ -18,12 +18,15 @@ class Home extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 
+    private $login = null;
+
 	public function __construct()
    	{
     	parent::__construct();
-        if (isset($_SESSION['login'])) {
-            $this->login = $_SESSION['login'];	
-        }
+    	if (!$this->session->has_userdata('login')) {
+    		$this->tools->redirect("/admin");
+    	}
+    	$this->login = $this->session->login;
    	}
 
 	public function index()

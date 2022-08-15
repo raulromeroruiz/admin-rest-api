@@ -1,5 +1,6 @@
 <?php
 $current = $this->uri->segment(2);
+$user = $this->session->login;
 ?>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
@@ -26,10 +27,10 @@ $current = $this->uri->segment(2);
                 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $login->nombres; ?> <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $user->nombres; ?> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/admin/perfil">Perfil</a></li>
-                            <?php if (in_array($login->tipo, [1,2])) { ?>
+                            <?php if (in_array($user->tipo, [1,2])) { ?>
                             <li><a href="/admin/usuarios">Usuarios</a></li>
                             <?php } ?>
                             <li class="divider"></li>

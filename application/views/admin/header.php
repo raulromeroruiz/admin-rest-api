@@ -1,11 +1,3 @@
-<?php
-@session_start();
-if (!isset($_SESSION['login'])) {
-    $this->tools->redirect("/admin");
-    exit;
-}
-$login = $_SESSION['login'];
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

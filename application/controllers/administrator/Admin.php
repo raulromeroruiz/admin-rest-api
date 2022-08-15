@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-session_start();
+
 class Admin extends CI_Controller {
 
 	/**
@@ -94,12 +94,11 @@ class Admin extends CI_Controller {
 	public function login()
 	{
 		$datos = $this->input->post();
-		// $datos['password'] = ($datos['password']!="") ? md5($datos['password']):"";
 
 		list($login, $response) = $this->manager->login($datos);
 		if ($login) {
 			if (in_array($response->tipo, array(1,2,3))) {
-				$_SESSION['login'] = $response;
+				$this->session->set_userdata('login', $response);
 				$response = array('result'=>"success");
 			}
 			else {
@@ -120,7 +119,7 @@ class Admin extends CI_Controller {
 
 	public function logout()
 	{
-		unset($_SESSION);
+		$this->session->unset_userdata('login');
 		session_destroy();
 		echo "<script>location.href='".base_url()."admin'</script>";
 	}

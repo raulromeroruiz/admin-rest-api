@@ -18,6 +18,8 @@ class Perfil extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 
+    private $login = null;
+
 	public function __construct()
    	{
     	parent::__construct();
@@ -25,9 +27,10 @@ class Perfil extends CI_Controller {
         $this->load->model('manager_model', 'manager');
         $this->load->model('usuarios_model', 'usuarios');
 
-        if (isset($_SESSION['login'])) {
-        	$this->login = $_SESSION['login'];
-        }
+        if (!$this->session->has_userdata('login')) {
+    		$this->tools->redirect("/admin");
+    	}
+    	$this->login = $this->session->login;
    	}
 
 	public function index()

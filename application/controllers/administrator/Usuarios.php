@@ -18,15 +18,15 @@ class Usuarios extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 
+	private $login = null;
+
 	public function __construct()
    	{
     	parent::__construct();
         $this->load->model('usuarios_model', 'usuarios');
         $this->load->model('manager_model', 'manager');
 
-        if (isset($_SESSION['login'])) {
-            $this->login = $_SESSION['login'];
-        }
+        $this->login = $this->session->login;
    	}
 
 	public function index()

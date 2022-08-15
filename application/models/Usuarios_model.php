@@ -1,19 +1,18 @@
 <?php
-@session_start();
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 class Usuarios_model extends CI_Model
 {
+    private $login = null;
+
     function __construct()
     {
         // Call the Model constructor
         parent::__construct();
         $db = $this->load->database();
-        if (isset($_SESSION['login'])) {
-            $this->login = $_SESSION['login'];
-        }
+        $this->login = $this->session->login;
     }
 
     function all()
