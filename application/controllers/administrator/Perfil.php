@@ -27,9 +27,6 @@ class Perfil extends CI_Controller {
         $this->load->model('manager_model', 'manager');
         $this->load->model('usuarios_model', 'usuarios');
 
-        if (!$this->session->has_userdata('login')) {
-    		$this->tools->redirect("/admin");
-    	}
     	$this->login = $this->session->login;
    	}
 

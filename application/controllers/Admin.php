@@ -18,8 +18,6 @@ class Admin extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	private $login = null;
-
 	public function __construct()
    	{
     	parent::__construct();
@@ -102,7 +100,7 @@ class Admin extends CI_Controller {
 		list($login, $response) = $this->manager->login($datos);
 		if ($login) {
 			if (in_array($response->tipo, array(1,2,3))) {
-				$_SESSION['login'] = $response;
+				$this->session->set_userdata('login', $response);
 				$response = array('result'=>"success");
 			}
 			else {
@@ -123,7 +121,7 @@ class Admin extends CI_Controller {
 
 	public function logout()
 	{
-		unset($_SESSION);
+		$this->session->unset_userdata('login');
 		session_destroy();
 		echo "<script>location.href='".base_url()."admin'</script>";
 	}

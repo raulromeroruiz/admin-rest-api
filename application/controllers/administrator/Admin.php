@@ -17,6 +17,7 @@ class Admin extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
 	public function __construct()
    	{
     	parent::__construct();
@@ -121,7 +122,7 @@ class Admin extends CI_Controller {
 	{
 		$this->session->unset_userdata('login');
 		session_destroy();
-		echo "<script>location.href='".base_url()."admin'</script>";
+		redirect(base_url());
 	}
 }
 
